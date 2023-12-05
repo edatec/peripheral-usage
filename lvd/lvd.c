@@ -6,12 +6,8 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-/*********************************
-  GPIO8:Low voltage detect
-**********************************/
-
-#define GPIO_LVD 1											//expand gpio Pin1
-#define DEV_GPIO_CHIP "/dev/gpiochip2"						//gpiochip number
+#define GPIO_LVD 1                                        //expand gpio Pin1
+#define DEV_GPIO_CHIP "/dev/gpiochip2"						        //gpiochip number
 #define LVD_HOOK_EXEC "echo LVD trigger callback script"	//custom callback script
 
 #define msleep(x) usleep((x)*1000)
