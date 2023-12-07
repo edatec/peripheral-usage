@@ -1,6 +1,24 @@
 # Usage for LVD
 
 
+## Update dtoverlay
+```sh
+cd lvd/dtoverlay
+dtc -@ -I dts -O dtb -o ed-pca953x.dtbo ed-pca953x-overlay.dts
+sudo cp ./ed-pca953x.dtbo /boot/overlays/
+```
+
+## Modify config.txt
+```sh
+sudo nano /boot/config.txt
+#Modify dtoverlay=ed-pca953x according to the following parameters
+#For IPC2100,IPC2600,HMI2100 series
+dtoverlay=ed-pca953x,ipc2110,addr=0x20
+#For IPC2200,HMI2200 series
+dtoverlay=ed-pca953x,ipc2210,addr=0x20
+```
+Reboot the device after completing the modifications.
+
 ## Install gpiod library
 
 ```sh
@@ -20,6 +38,7 @@ Turn off the 12V main power supply of the device, you will obtain the following 
 Low voltage
 LVD trigger callback script
 ```
+**NOTE: You can modify the macro `LVD_ HOOK_ EXEC` specifies a custom callback script**
 
 At this point,the output of `sudo cat /sys/kernel/debug/gpio`:
 ```sh
