@@ -1,0 +1,13 @@
+[Unit]
+Description="LVD detect service"
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=lvd-en.sh enable
+ExecStop=lvd-en.sh disable
+StandardOutput=journal
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

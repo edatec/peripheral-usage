@@ -240,6 +240,14 @@
 		};
 	};
 
+	fragment@202 {
+		target = <&pca>;
+		__dormant__ {
+			gpio-line-names = "DI0", "DI1", "DI2", "DI3", "DI4", "DI5", "DI6", "DI7",
+							"DO0", "DO1", "DO2", "DO3", "DO4", "DO5", "DO6", "DO7";
+		};
+	};
+
 	fragment@300 {
 		target = <&pca>;
 		__dormant__ {
@@ -268,6 +276,7 @@
 		i2c1 = <&i2c_frag>,"target:0=",<&i2c_arm>,<0>, "-100-101+102";
 		ipc2110 = <0>, "+3+200+300+301";
 		ipc2210 = <0>, "+3+201+300+301";
+		exp8x8y = <0>, "+3+202";
 		pca6416 = <0>, "+1";
 		pca9505 = <0>, "+2";
 		pca9535 = <0>, "+3";

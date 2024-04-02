@@ -10,7 +10,7 @@
 
 #define DEV_I2C_BUS   10
 #define DEV_I2C_ADDR  0x20
-#define LVD_HOOK_EXEC "echo LVD trigger callback script"  //custom callback script
+#define LVD_HOOK_EXEC "/usr/sbin/lvd-callback.sh"  //custom callback script
 
 #define msleep(x) usleep((x)*1000)
 
