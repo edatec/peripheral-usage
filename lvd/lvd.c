@@ -8,6 +8,10 @@
 #include <sys/time.h>
 #include <errno.h>
 
+#include "iniparser.h"
+#define LVD_CONFIG "/etc/lvd/config.ini"
+
+
 #define DEV_I2C_BUS   10
 #define DEV_I2C_ADDR  0x20
 #define LVD_HOOK_EXEC "/usr/sbin/lvd-callback.sh"  //custom callback script
@@ -16,6 +20,7 @@
 
 extern int errno;
 unsigned int m_lvd_gpio = 0;
+int m_lvd_gpiochip = 0;
 
 void str_CR_LF_remove(char *param_str)
 {
@@ -125,6 +130,22 @@ void trig_state_hook(unsigned int offset)
   }
 }
 
+int parse_config(){
+    dictionary  *ini;
+    ini = iniparser_load(LVD_CONFIG);
+    if (ini==NULL) {
+        fprintf(stderr, "cannot parse file: %s\n", LVD_CONFIG);
+        return -1 ;
+    }
+    m_lvd_gpiochip = iniparser_getint(ini, "gpio:gpiochip", -1);
+    m_lvd_gpio = iniparser_getint(ini, "gpio:line", -1);
+    fprintf(stdout, "[config] gpiochip=%d, line=%d\n", m_lvd_gpiochip, m_lvd_gpio);
+    if (m_lvd_gpiochip == -1 || m_lvd_gpio == -1){
+        return -2;
+    }
+    return 0;
+}
+
 int main(int argc, char *argv[])
 {
     char cmd[256] = {0};
@@ -138,8 +159,12 @@ int main(int argc, char *argv[])
     struct gpiod_chip *chip;
     struct gpiod_line_bulk lines;
     struct gpiod_line_bulk events;
-
-    while(1)
+    int state = 1;
+    if(parse_config() == 0){
+        state = 0;
+        sprintf(gpiochip_n, "%d",m_lvd_gpiochip);
+    }
+    while(state)
     {
       msleep(200);
       //Obtain LVD gpiochip number
@@ -161,19 +186,25 @@ int main(int argc, char *argv[])
       }
 
       str_CR_LF_remove(lvd_gpio);
-
+      
+      m_lvd_gpio = atoi(lvd_gpio);
       break;
     }
 
     // use pin as input
-    m_lvd_gpio = atoi(lvd_gpio);
     offsets[0] = m_lvd_gpio;
+
+    fprintf(stdout, "[Use] gpiochip=%s, line=%d\n", gpiochip_n, m_lvd_gpio);
 
     while(1)
     {
       msleep(10);
       sprintf(dev_gpiochio, "/dev/gpiochip%s",gpiochip_n);
-      
+      if (access(dev_gpiochio, F_OK) != 0){
+            fprintf(stderr, "gpiochip not exist: %s\n", dev_gpiochio);
+            err = -1;
+            break;
+      }
       chip = gpiod_chip_open(dev_gpiochio);
       if(!chip)
       {

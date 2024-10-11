@@ -81,3 +81,10 @@ raspberrypi root: LVD trigger callback script
 **NOTE: You can modify the content of the script `lvd-callback.sh` according to the needs of your application**
 
 
+### LVD GPIO
+Add read config: /etc/lvd/config.ini
+```ini
+[gpio]
+gpiochip=0
+line=11
+```

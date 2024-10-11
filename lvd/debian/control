@@ -1,0 +1,13 @@
+Source: ed-lvd
+Section: unknown
+Priority: optional
+Maintainer: EDATEC <support@edatec.cn>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: http://www.eda-iot.com/
+
+
+Package: ed-lvd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgpiod-dev, gpiod
+Description: LVD detect service

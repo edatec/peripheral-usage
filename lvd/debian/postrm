@@ -1,0 +1,9 @@
+#!/bin/sh
+
+start(){
+    systemctl daemon-reload
+}
+
+start
+
+exit 0

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+
+start(){
+    systemctl daemon-reload
+    systemctl enable lvd-detect.service
+    systemctl start lvd-detect.service
+}
+
+start
+
+exit 0
