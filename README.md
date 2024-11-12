@@ -88,3 +88,10 @@ Add read config: /etc/lvd/config.ini
 gpiochip=0
 line=11
 ```
+
+use [iniparser](https://github.com/ndevilla/iniparser)
+```bash
+# Compile iniparser
+mkdir build && cd build
+cmake .. -DBUILD_DOCS=off  && make
+```
