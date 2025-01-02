@@ -168,7 +168,8 @@ int main(int argc, char *argv[])
     {
       msleep(200);
       //Obtain LVD gpiochip number
-      sprintf(cmd, "gpiodetect | grep %d-%04x | sed 's/gpiochip//' | awk '{print $1}'",DEV_I2C_BUS,DEV_I2C_ADDR);
+      //   sprintf(cmd, "gpiodetect | grep %d-%04x | sed 's/gpiochip//' | awk '{print $1}'",DEV_I2C_BUS,DEV_I2C_ADDR);
+      sprintf(cmd, "gpiofind LVD | awk '{print $1}' | sed 's/gpiochip//'");
       err = utils_system_ex(cmd, gpiochip_n, 16);
       if(err < 0)
       {
@@ -178,7 +179,8 @@ int main(int argc, char *argv[])
       str_CR_LF_remove(gpiochip_n);
 
       //Obtain LVD gpio pin number
-      sprintf(cmd, "gpioinfo %s | grep 'LVD' | cut -d ':' -f 1 | awk '{print $2}'",gpiochip_n);
+    //   sprintf(cmd, "gpioinfo %s | grep 'LVD' | cut -d ':' -f 1 | awk '{print $2}'",gpiochip_n);
+      sprintf(cmd, "gpiofind LVD | awk '{print $2}'");
       err = utils_system_ex(cmd, lvd_gpio, 16);
       if(err < 0)
       {
