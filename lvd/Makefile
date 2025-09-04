@@ -25,7 +25,7 @@ deb:
 	dpkg-buildpackage -us -uc
 
 .PHONY: all
-all: lvd deb
+all: deb
 
 .PHONY: clean
 clean:

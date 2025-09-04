@@ -9,5 +9,5 @@ Homepage: http://www.eda-iot.com/
 
 Package: ed-lvd
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libgpiod-dev, gpiod
+Depends: libgpiod-dev, gpiod
 Description: LVD detect service

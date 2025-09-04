@@ -1,4 +1,3 @@
-lvd /usr/sbin/
 lvd-callback.sh /usr/sbin/
-service/lvd-en.sh /usr/sbin/
+lvd-monitor.py /opt/ed-lvd/
 service/lvd-detect.service /lib/systemd/system/
