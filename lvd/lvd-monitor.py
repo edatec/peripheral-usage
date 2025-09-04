@@ -8,9 +8,7 @@ import sys
 G_TRIGG_SCIRPT = "/usr/sbin/lvd-callback.sh"
 G_CONF_INI = "/etc/lvd/config.ini"
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
 
 class GPIO_ext:
 

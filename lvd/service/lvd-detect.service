@@ -3,11 +3,8 @@ Description="LVD detect service"
 After=multi-user.target
 
 [Service]
-Type=oneshot
-ExecStart=lvd-en.sh enable
-ExecStop=lvd-en.sh disable
-StandardOutput=journal
-RemainAfterExit=true
+Type=simple
+ExecStart=/usr/bin/python3 /opt/ed-lvd/lvd-monitor.py
 
 [Install]
 WantedBy=multi-user.target

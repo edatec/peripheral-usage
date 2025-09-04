@@ -1,6 +1,7 @@
 #!/bin/sh
 
 start(){
+    systemctl disable lvd-detect.service
     systemctl daemon-reload
 }
 
