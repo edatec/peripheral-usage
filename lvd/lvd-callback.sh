@@ -33,12 +33,11 @@ function backlight_off(){
     if command -v ed-ddc-server >/dev/null 2>&1; then
         echo "[DEBUG] Using ed-ddc-server"
         ed-ddc-server brightness write -v 0
-    else
-        echo "[DEBUG] Using sysfs method"
-        echo 1 | tee /sys/class/backlight/10-0027/bl_power 2>/dev/null || \
-        echo 1 | tee /sys/class/backlight/*/bl_power 2>/dev/null || \
-        echo 0 | tee /sys/class/backlight/*/brightness 2>/dev/null
     fi
+    echo "[DEBUG] Using sysfs method"
+    # echo 1 | tee /sys/class/backlight/10-0027/bl_power 2>/dev/null || \
+    echo 1 | tee /sys/class/backlight/*/bl_power 2>/dev/null || \
+    echo 0 | tee /sys/class/backlight/*/brightness 2>/dev/null
 }
 
 function backlight_on(){
@@ -47,12 +46,11 @@ function backlight_on(){
         echo "[DEBUG] Using ed-ddc-server"
         sleep 1
         ed-ddc-server brightness write -v 100
-    else
-        echo "[DEBUG] Using sysfs method"
-        echo 0 | tee /sys/class/backlight/10-0027/bl_power 2>/dev/null || \
-        echo 0 | tee /sys/class/backlight/*/bl_power 2>/dev/null || \
-        echo 255 | tee /sys/class/backlight/*/brightness 2>/dev/null
     fi
+    echo "[DEBUG] Using sysfs method"
+    # echo 0 | tee /sys/class/backlight/10-0027/bl_power 2>/dev/null || \
+    echo 0 | tee /sys/class/backlight/*/bl_power 2>/dev/null || \
+    echo 255 | tee /sys/class/backlight/*/brightness 2>/dev/null
 }
 
 function cpu_freq_min(){
