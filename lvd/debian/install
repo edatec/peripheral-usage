@@ -1,4 +1,4 @@
 lvd-callback.sh /usr/sbin/
-debian/deb/lvd-monitor-arm64 /opt/ed-lvd/
-debian/deb/lvd-monitor-armhf /opt/ed-lvd/
+rootfs/bin/lvd-monitor-arm64 /opt/ed-lvd/
+rootfs/bin/lvd-monitor-armhf /opt/ed-lvd/
 service/lvd-detect.service /lib/systemd/system/

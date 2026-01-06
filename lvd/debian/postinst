@@ -1,12 +1,15 @@
 #!/bin/sh
 
+BITS=$(getconf LONG_BIT)
 
-start(){
-    systemctl daemon-reload
-    systemctl enable lvd-detect.service
-    systemctl start lvd-detect.service
-}
+if [ $BITS -eq 64 ];then
+    mv /opt/ed-lvd/lvd-monitor-arm64 /opt/ed-lvd/lvd-monitor
+else
+    mv /opt/ed-lvd/lvd-monitor-armhf /opt/ed-lvd/lvd-monitor
+fi
 
-start
+chmod +x /opt/ed-lvd/lvd-monitor
+
+systemctl daemon-reload
 
 exit 0
