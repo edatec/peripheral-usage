@@ -1,15 +1,5 @@
 #!/bin/sh
 
-# Select correct binary based on architecture
-ARCH=$(dpkg --print-architecture)
-cd /opt/ed-lvd/
-if [ "$ARCH" = "arm64" ]; then
-    ln -sf lvd-monitor-arm64 lvd-monitor
-    rm -f lvd-monitor-armhf
-elif [ "$ARCH" = "armhf" ]; then
-    ln -sf lvd-monitor-armhf lvd-monitor
-    rm -f lvd-monitor-arm64
-fi
 
 start(){
     systemctl daemon-reload
