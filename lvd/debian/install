@@ -1,3 +1,4 @@
 lvd-callback.sh /usr/sbin/
-lvd-monitor.py /opt/ed-lvd/
+deb/lvd-monitor-arm64 /opt/ed-lvd/
+deb/lvd-monitor-armhf /opt/ed-lvd/
 service/lvd-detect.service /lib/systemd/system/
