@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /opt/ed-lvd/lvd-monitor.py
+ExecStart=/opt/ed-lvd/lvd-monitor
 
 [Install]
 WantedBy=multi-user.target

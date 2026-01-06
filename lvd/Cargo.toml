@@ -1,0 +1,8 @@
+[package]
+name = "lvd-monitor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gpiod = "0.3.0"
+ctrlc = "3.4"
