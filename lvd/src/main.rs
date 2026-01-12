@@ -38,7 +38,7 @@ fn find_ini() -> Option<(String, u32)> {
 fn find_lvd() -> Option<(String, u32)> {
     println!("Auto find LVD...");
     
-    for i in 0..8 {
+    for i in 0..30 {
         let chip_name = format!("gpiochip{}", i);
         if let Ok(chip) = Chip::new(&chip_name) {
             for offset in 0..chip.num_lines() {
