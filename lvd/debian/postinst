@@ -11,5 +11,7 @@ fi
 chmod +x /opt/ed-lvd/lvd-monitor
 
 systemctl daemon-reload
+systemctl enable lvd-detect.service
+systemctl start lvd-detect.service
 
 exit 0
