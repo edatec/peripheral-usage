@@ -76,6 +76,7 @@ function run(){
         poweroff_codesys
         backlight_off
         cpu_freq_min
+        sync
         ;;
    *)
         echo "Unknown parameters"
