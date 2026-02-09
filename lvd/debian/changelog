@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 ed-lvd (1.20260209.1) unstable; urgency=medium
 
   * Delte dependence
  -- EDATEC <support@edatec.cn>  Mon, 9 Feb 2026 17:20:00 +0100
 
 ed-lvd (1.20260106.2) unstable; urgency=medium
+=======
+ed-lvd (1.20260106.3) unstable; urgency=medium
+>>>>>>> 5408ffce2746710d20d79b6b271dd7f2edb113c6
 
   * Support Debian 13
  -- EDATEC <support@edatec.cn>  Tue, 6 Jan 2026 17:20:00 +0100
